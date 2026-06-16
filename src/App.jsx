@@ -3,7 +3,11 @@ import { Routes, Route } from 'react-router-dom'
 import { supabase } from './supabaseClient'
 import { useState, useEffect } from 'react'
 import AdminDashboard from './pages/AdminDashboard'
-
+import EventPage from './pages/EventPage'
+import ManageEventSouvenirs from './pages/ManageEventSouvenirs'
+import DecorationConfig from './pages/DecorationConfig'
+import LandingPage from './pages/LandingPage'
+import ReportPage from './pages/ReportPage'
 import SouvenirGrid from './components/SouvenirGrid'
 // import AdminDashboard from './pages/AdminDashboard' // Nanti kita aktifkan
 
@@ -29,10 +33,15 @@ function App() {
       {/* Routing: Tentukan halaman berdasarkan URL */}
       <Routes>
         {/* Halaman Utama: Lapangan (Counter) */}
-        <Route path="/" element={<SouvenirGrid />} />
+        <Route path="/" element={<LandingPage />} />
         
         {/* Halaman Admin: Nanti kita buat */}
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/event/:slug" element={<EventPage />} />
+        
+        <Route path="/admin/decoration/:eventId" element={<DecorationConfig />} />
+        <Route path="/admin/event/:eventId" element={<ManageEventSouvenirs />} />
+        <Route path="/admin/report/:eventId" element={<ReportPage />} />
       </Routes>
     </div>
   )
